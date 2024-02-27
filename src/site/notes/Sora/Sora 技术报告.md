@@ -19,7 +19,7 @@ OpenAI近期推出了新的视频生成模型，该工作训练了文本条件�
 
 LLM通过使用token来统一多种文本模态——代码、数学公式和多种自然语言。在sora中作者思考视觉数据的生成模型如何继承该模式。由此，LLM拥有文本token，Sora拥有视觉patches。patch在先前工作中被证明是视觉模型的有效表示，在训练生成式模型时可以用来表示不同类型的视频图像数据。
 
-![Pasted image 20240226141726.png](/img/user/Sora/Pasted%20image%2020240226141726.png)
+![](https://images.openai.com/blob/1d2955dd-9d05-4f33-b346-be531d2a7737/figure-patches.png?trim=0,0,0,0&width=1400)
 
 总的来说，首先通过压缩视频到低维潜在空间，然后将该表示解压缩到时空patches。
 
@@ -35,7 +35,7 @@ LLM通过使用token来统一多种文本模态——代码、数学公式和多
 
 Sora是一个扩散模型。将充满噪声的patches作为输入（还有条件信息，例如，文本提示），该模型训练为输出原本“干净”的patches。更重要的是，Sora是一个**diffusion transformer**。transformer已在不同领域展现了强大的Scaling能力，包括语言模型、计算机视觉和图像生成。
 
-![Pasted image 20240226145510.png](/img/user/Sora/Pasted%20image%2020240226145510.png)
+![](https://images.openai.com/blob/aa8b687c-bee5-4d72-a1c8-1350d33c80d3/figure-diffusion.png?trim=0,0,0,0&width=1400)
 
 在这项工作中，作者发现diffusion transformers 在处理视频模型中同样有效。在下面的视频对比中，使用同样的种子和输入，随着训练计算的增加，样本质量显著提升。
 
