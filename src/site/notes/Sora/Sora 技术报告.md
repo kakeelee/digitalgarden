@@ -6,7 +6,7 @@
 
 OpenAI近期推出了新的视频生成模型，该工作训练了文本条件的扩散模型来生成不同类型、长度、视角和分辨率的视频。采用Transformer架构在视频图像隐编码的时空patch上运行。Sora能够生成高保真度的一分钟视频。结果表明，Scaling video generating models构建物理世界通用模拟器的有前途途径。  
 
-<video autoplay controls="" preload="metadata" loop="true" style="width:640px; height:430px; max-width:100%">
+<video autoplay controls="" preload="metadata" loop="true" style="width:100%; height:430px; max-width:100%">
 	 <source id="mp4" src="https://cdn.openai.com/tmp/s/title_0.mp4" type="video/mp4">
 </video>  
 
