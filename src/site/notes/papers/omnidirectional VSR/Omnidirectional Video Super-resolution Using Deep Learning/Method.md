@@ -50,3 +50,29 @@ $$
 
 ![Pasted image 20240312122704.png](/img/user/asserts/Pasted%20image%2020240312122704.png)
 
+![Pasted image 20240325180556.png](/img/user/Pasted%20image%2020240325180556.png)
+> ↓ represents a pixel-unshuffle operation.
+
+# Dual-Duct Refinement
+
+![Pasted image 20240326102441.png](/img/user/Pasted%20image%2020240326102441.png)
+> 图7为作者提出的一个双导多信息交换残差块
+
+
+该模块的输入为上一层的输出$G_{\text{global}}、G_{\text{local}}$
+
+通过一个残差卷积网络进行细化。该网络由十个残差块组成，每个块包含一个双通道，用于同时学习ERP帧之间的全局和局部关系。
+
+![Pasted image 20240326102549.png](/img/user/Pasted%20image%2020240326102549.png)
+
+# Upsampling
+
+在残差块中的细化操作之后，来自局部和全局通道的两个结果，即$LF_t$和$GF_t$，分别经过3×3卷积操作，然后进行**深度到空间的转换**，将×4特征深度转换为空间数据.
+![Pasted image 20240326103113.png](/img/user/Pasted%20image%2020240326103113.png)
+> 对于深度到空间的转换，S3PO模型使用像素洗牌操作。
+> pixel shuffle
+> 在深度学习中，Pixel shuffle通常作为一种上采样技术被集成到神经网络中，用于增加特征图的尺寸。通过Pixel shuffle，神经网络可以学习到如何有效地将低分辨率的特征图转换为高分辨率的特征图，从而提高图像重建和超分辨率的效果。
+
+这两个输出沿深度连接，并通过两个3×3卷积层，得到×4超分辨率残差。
+
+超分辨率残差与双线性插值的LR帧逐元素相加，用于给定$F_t$的最终HR重建（$F_t × 4$）。
